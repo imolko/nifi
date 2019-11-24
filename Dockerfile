@@ -19,4 +19,4 @@ RUN mkdir -p /develop/github \
 FROM apache/nifi:1.10.0
 COPY --from=nsq-builder   /develop/github/Nifi-NSQ-Consumer/nifi-nsq-nar/target/nifi-nsq-nar-*.nar /opt/nifi/nifi-current/lib/
 COPY --from=proto-builder /develop/github/nifi-protobuf-processor/target/nifi-protobuf-processor-*.nar /opt/nifi/nifi-current/lib/
-RUN mkdir -p /home/nifi/.ssh && touch /home/nifi/.ssh/known_hosts && chmod -R 600 /home/nifi/.ssh
+RUN mkdir -p /home/nifi/.ssh && touch /home/nifi/.ssh/known_hosts && chmod 700 /home/nifi/.ssh && chmod 600 /home/nifi/.ssh/*
