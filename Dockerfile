@@ -16,7 +16,7 @@ RUN mkdir -p /develop/github \
     && mvn nifi-nar:nar
 
 # Imagen de nifi
-FROM apache/nifi:1.10.0
+FROM apache/nifi:1.12.1
 COPY --from=nsq-builder   /develop/github/Nifi-NSQ-Consumer/nifi-nsq-nar/target/nifi-nsq-nar-*.nar /opt/nifi/nifi-current/lib/
 COPY --from=proto-builder /develop/github/nifi-protobuf-processor/target/nifi-protobuf-processor-*.nar /opt/nifi/nifi-current/lib/
 RUN mkdir -p /home/nifi/.ssh && touch /home/nifi/.ssh/known_hosts && chmod 700 /home/nifi/.ssh && chmod 600 /home/nifi/.ssh/*
